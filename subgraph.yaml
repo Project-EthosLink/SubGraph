@@ -1,0 +1,35 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: base-testnet
+    source:
+      address: "0xE6E73E2A6AB5023D38607dA57B09C4beb3647259"
+      abi: Contract
+      startBlock: 8367402
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SocialTokenHolding
+        - Creator
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: CratorRigistered(uint256,address,string)
+          handler: handleCratorRigistered
+        - event: SocialTokenBought(uint256,address,address,uint256,uint256)
+          handler: handleSocialTokenBought
+        - event: SocialTokenLaunched(uint256,address,uint256)
+          handler: handleSocialTokenLaunched
+        - event: SocialTokenListed(uint256,address,uint256,uint256)
+          handler: handleSocialTokenListed
+        - event: SocialTokenMinted(uint256,address,uint256,uint256,bool,string)
+          handler: handleSocialTokenMinted
+        - event: SocialTokenUnlisted(uint256,address,uint256)
+          handler: handleSocialTokenUnlisted
+      file: ./src/contract.ts

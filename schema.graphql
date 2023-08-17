@@ -1,0 +1,23 @@
+type SocialTokenHolding @entity {
+  id: ID!
+  SocialTokenId: BigInt!
+  Creator: Bytes!
+  Holder: Bytes!
+  IsLaunched: Boolean!
+  URI: String!
+  LaunchingPrice: BigInt!
+  TotalAmountMinted: BigInt!
+  AmountAvailbleforSale: BigInt!
+  AmountOwnedByHolder: BigInt!
+  AmountListedByHolder: BigInt!
+  PriceSetByHolder: BigInt!
+  ReSaleRoyalty: BigInt!
+  Transferrable: Boolean!
+}
+
+type Creator @entity {
+  id: ID!
+  tokenId: BigInt!
+  CreatorAddress: Bytes!
+  URI: String!
+}
